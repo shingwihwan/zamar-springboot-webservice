@@ -27,17 +27,16 @@ public class HelloControllerTest {
     }
 
     @Test
-    public void hellDto가_리턴된다() throws Exception    {
-        String name = "zamar";
-        int amount = 1000;
+    public void helloDto가_리턴된다() throws Exception{
 
-        mockMvc.perform(
-                get("/hello/dto")
-                    .param("name", name)
-                    .param("amount", String.valueOf(amount)))
+        String name = "zamar";
+        int amount = 3000;
+
+        mockMvc.perform(get("/hello/dto")
+                .param("name", name)
+                .param("amount", String.valueOf(amount)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.name", is(name)))
                 .andExpect(jsonPath("$.amount", is(amount)));
-
     }
 }
